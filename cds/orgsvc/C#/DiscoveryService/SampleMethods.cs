@@ -1,13 +1,11 @@
 ﻿using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Xrm.Sdk.Discovery;
-using Microsoft.Xrm.Sdk.WebServiceClient;
 using Microsoft.Xrm.Tooling.Connector;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace PowerApps.Samples
 {
@@ -58,8 +56,15 @@ namespace PowerApps.Samples
 
             // Call to get organizations from global discovery
             var organizations = CrmServiceClient.DiscoverGlobalOrganizations(
-                    targeturl, creds, null, clientId, appReplyUri, "", false, string.Empty, PromptBehavior.Auto);
-
+                  discoveryServiceUri:targeturl, 
+                  clientCredentials: creds, 
+                  user: null, 
+                  clientId: clientId,
+                  redirectUri: appReplyUri, 
+                  tokenCachePath: "",
+                  isOnPrem: false,
+                  authority: string.Empty, 
+                  promptBehavior: PromptBehavior.Auto);
 
             return organizations.ToList();
         }
