@@ -198,4 +198,6 @@ export type ColumnDataType =
   | 'DateAndTime'
   | 'Image'
   | 'File'
-  | 'Persona';
+  | 'Persona'
+  | 'RichText'
+  | 'UniqueIdentifier';
